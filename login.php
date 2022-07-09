@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-	<title>Реєстрація</title>
+	<title>Вхід</title>
 </head>
 <style>
 	.form-signin {
@@ -34,16 +34,35 @@
 		<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" id="inputPassword" class="form-control mt-2" placeholder="Password" required="">
-		<div class="checkbox mb-2">
-			<label>
-				<input type="checkbox" value="remember-me"> Remember me
-			</label>
-		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Увійти</button>
+		<button class="btn btn-lg btn-primary btn-block mt-3" id="login_btn" type="button">Увійти</button>
 		<a href="/register.php" class="link mt-2">реєстрація</a>
 		<p class="mt-2 text-muted">© 2022-2024</p>
 	</form>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$('#login_btn').click(() => {
+			let inputEmail = $('#inputEmail').val(),
+				inputPassword = $('#inputPassword').val();
 
+			if (inputEmail && inputPassword) {
+				$.ajax({
+					url: './axios/log.php',
+					type: 'POST',
+					cache: false,
+					data: {
+						'email': inputEmail,
+						'password': inputPassword
+					},
+					dataType: 'html',
+					success: (data) => {
+						if (data == 'done') {
+							window.location.href = 'http://todoappwithmysql/';
+						}
+					}
+				})
+			}
+		});
+	</script>
 </body>
 
 </html>
