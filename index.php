@@ -29,6 +29,9 @@ require('./require/head.php');
 					if (data == 'done') {
 						window.location.reload();
 					}
+					console.log('====================================');
+					console.log('work');
+					console.log('====================================');
 				}
 			})
 		});
