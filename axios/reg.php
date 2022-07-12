@@ -7,8 +7,8 @@ $hash = 'fdgdofgoikdfjhoidfjhoifgjhogfjhfgoi';
 $pass = md5($pass . $hash);
 
 
-$sql = 'INSERT INTO users(email, password) VALUES (:email, :password)';
-$query = $pdo->prepare($sql);
-$query->execute(['email' => $email, 'password' => $pass]);
+$sql = "INSERT INTO `users` (email, password) VALUES('$email', '$pass')";
 
-echo('done');
+$mysqli->query($sql);
+$mysqli->close();	
+echo ('done');

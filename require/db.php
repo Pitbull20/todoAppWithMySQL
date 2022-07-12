@@ -4,5 +4,4 @@ $dbName = 'todoapp';
 $dbUserName = 'root';
 $dbUserPassword = '';
 
-$dns = "mysql:host=$host;dbname=$dbName";
-$pdo = new PDO($dns, $dbUserName, $dbUserPassword);
+$mysqli = new mysqli($host,$dbName, $dbUserName, $dbUserPassword);
